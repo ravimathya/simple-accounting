@@ -1,0 +1,31 @@
+<div class="box">
+    <h1>Balance: Rs. <%= Simple.balance%> </h1>
+    <h1>Debt: Rs. <%= Simple.debt %> </h1>
+    <h1>Total: Rs. <%= Simple.total%></h1>
+
+</div>
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Title</th>
+            <th scope="col">Amount</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <% @simples.each do |simple| %>
+
+    <tbody>
+        <tr>
+            <th scope="row"><%= simple.date %></th>
+            <td><%= simple.title %></td>
+            <td><%= simple.amount %></td>
+            <td><%= link_to 'Edit', edit_simple_path(simple), class: 'btn btn-sm btn-success' %></td>
+            <td><%= link_to 'Delete', simple_path(simple), method: :delete, class: 'btn btn-sm btn-danger', data: {confirm: "Are you sure?"} %></td>
+
+        </tr>
+    </tbody>
+    <% end %>
+
+</table>

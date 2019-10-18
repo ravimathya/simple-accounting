@@ -1,0 +1,15 @@
+class Simple < ApplicationRecord
+    validates :title, :amount, :date, presence:true
+
+    def self.total
+        sum(:amount)
+    end
+
+    def self.balance
+        where("amount > 0").sum(:amount)
+    end
+
+    def self.debt
+        where("amount < 0").sum(:amount)
+    end
+end
